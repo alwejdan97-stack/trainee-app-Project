@@ -4,9 +4,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public class HelloController {
     @GetMapping("hello")
     public String initialMessage(){
         return "Welcome to Code Creators Spring Boot Training... ";
+    }
+
+    public String helpMessage(){
+        return "If you are stuck, please post your error screenshot on Slack!";
     }
 }
