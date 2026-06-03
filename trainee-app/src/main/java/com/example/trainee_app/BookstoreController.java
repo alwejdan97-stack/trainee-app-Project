@@ -24,7 +24,21 @@ public class BookstoreController {
     }
 
     @GetMapping("checkStock")
-    public String searchBook(@RequestParam int id){
-
+    public String searchBook(@RequestParam int bookId){
+        boolean bookFounder=false;
+        if(!bookFounder){
+            for(InventoryBook ib:inventoryBookList){
+                if(ib.getBookID()==bookId && ib.getStockCount()>0){
+                    return ib.getTitle()+" book is available | price is: "+ib.getPrice();
+                    bookFounder=true;
+                    break;
+                }else if(ib.getBookID()==bookId && ib.getStockCount()<0){
+                    return ib.getTitle()+" book is sold-out...";
+                    bookFounder=true;
+                    break;
+                }
+            }
+        }
+        return "NO Book with ID "+bookId;
     }
 }
