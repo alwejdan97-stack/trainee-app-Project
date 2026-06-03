@@ -1,22 +1,22 @@
 package com.example.trainee_app;
 
 public class Book {
-    private int ID;
+    private int id;
     private String name;
     private int authorId;
 
-    public Book(int ID, String name, int authorId) {
-        this.ID = ID;
+    public Book(int id, String name, int authorId) {
+        this.id = id;
         this.name = name;
         this.authorId = authorId;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

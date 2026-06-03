@@ -1,24 +1,24 @@
 package com.example.trainee_app;
 
 public class InventoryBook {
-    private int bookID;
+    private int bookId;
     private String title;
     private double price;
     private int stockCount;
 
-    public InventoryBook(int bookID, String title, double price, int stockCount) {
-        this.bookID = bookID;
+    public InventoryBook(int bookId, String title, double price, int stockCount) {
+        this.bookId = bookId;
         this.title = title;
         this.price = price;
         this.stockCount = stockCount;
     }
 
-    public int getBookID() {
-        return bookID;
+    public int getBookId() {
+        return bookId;
     }
 
-    public void setBookID(int bookID) {
-        this.bookID = bookID;
+    public void setBookID(int bookId) {
+        this.bookId = bookId;
     }
 
     public String getTitle() {

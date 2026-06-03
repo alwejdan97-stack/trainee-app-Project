@@ -12,8 +12,8 @@ public class BookController {
     private static List<Book> books=new ArrayList<>();
 
     @GetMapping("addBook")
-    public String addBook(@RequestParam int ID, @RequestParam String name, @RequestParam int authorId){
-        Book book=new Book(ID,name,authorId);
+    public String addBook(@RequestParam int id, @RequestParam String name, @RequestParam int authorId){
+        Book book=new Book(id,name,authorId);
         books.add(book);
         return name+ " Book ADDED Successfully";
     }
@@ -24,9 +24,9 @@ public class BookController {
     }
 
     @GetMapping("findById")
-    public Book searchById(@RequestParam int ID){
+    public Book searchById(@RequestParam int id){
         for(Book b:books){
-            if(b.getID()==ID){
+            if(b.getId()==id){
                 return b;
             }
         }
@@ -44,9 +44,9 @@ public class BookController {
     }
 
     @GetMapping("searchMsg")
-    public String searchBook(@RequestParam int ID){
+    public String searchBook(@RequestParam int id){
         for(Book b:books){
-            if(b.getID()==ID){
+            if(b.getId()==id){
                 return "Found: " + b.getName();
             }
         }

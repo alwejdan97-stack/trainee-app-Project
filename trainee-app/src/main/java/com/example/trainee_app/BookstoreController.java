@@ -26,9 +26,9 @@ public class BookstoreController {
     @GetMapping("checkStock")
     public String searchBook(@RequestParam int bookId){
             for(InventoryBook ib:inventoryBookList){
-                if(ib.getBookID()==bookId && ib.getStockCount()>0){
+                if(ib.getBookId()==bookId && ib.getStockCount()>0){
                     return ib.getTitle()+" book is available | price is: "+ib.getPrice();
-                }else if(ib.getBookID()==bookId && ib.getStockCount()<=0){
+                }else if(ib.getBookId()==bookId && ib.getStockCount()<=0){
                     return ib.getTitle()+" book is sold-out...";
                 }
             }

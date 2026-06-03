@@ -25,8 +25,8 @@ public class LibraryController {
     }
 
     @GetMapping("addRelationalBook")
-    public String addBooks(@RequestParam int ID, @RequestParam String name, @RequestParam int authorId){
-        Book newBook=new Book(ID,name,authorId);
+    public String addBooks(@RequestParam int id, @RequestParam String name, @RequestParam int authorId){
+        Book newBook=new Book(id,name,authorId);
         boolean authorExists = false;
         for(Author a:authorList){
             if(a.getId()==authorId){
