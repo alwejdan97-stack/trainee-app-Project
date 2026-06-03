@@ -37,4 +37,10 @@ public class LibraryController {
         }
             return "ERROR: Author with ID " + authorId + " is NOT Exists";
     }
+
+    @GetMapping("allBooks")
+    public List<Book> viewBooks(){
+        return bookList;
+    }
+
 }
