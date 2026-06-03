@@ -12,8 +12,8 @@ public class BookController {
     private static List<Book> books=new ArrayList<>();
 
     @GetMapping("add-book")
-    public String addBook(@RequestParam int ID, @RequestParam String name){
-        Book book=new Book(ID,name);
+    public String addBook(@RequestParam int ID, @RequestParam String name, @RequestParam String authorId){
+        Book book=new Book(ID,name,authorId);
         books.add(book);
         return name+ " Book ADDED Successfully";
     }
