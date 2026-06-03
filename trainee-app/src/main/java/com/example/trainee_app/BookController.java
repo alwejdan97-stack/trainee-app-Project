@@ -16,6 +16,11 @@ public class BookController {
     public String addBook(@RequestParam int ID, @RequestParam String name){
         Book book=new Book(ID,name);
         books.add(book);
-        return "Book ADD Successfully";
+        return "Book ADDED Successfully";
+    }
+
+    @GetMapping("all-book")
+    public List<Book> viewBooks(){
+        return books;
     }
 }
