@@ -43,4 +43,33 @@ public class LibraryController {
         return bookList;
     }
 
+    @GetMapping("authorReport")
+    public String userFriendly(@RequestParam String authorName){
+        Author authorExists = null;
+        for(Author a:authorList){
+            if(a.getName().equalsIgnoreCase(authorName)){
+                authorExists=a;
+                break;
+            }
+        }
+        if(authorExists==null){
+            return "ERROR: Author with Name " + authorName + " is NOT Exists";
+        }
+        String authorBooks= " ";
+        for(Book b:bookList){
+            if(b.getAuthorId()==authorExists.getId()){
+                authorBooks = authorBooks+ b.getName()+" | ";
+            }
+        }
+        if(!authorBooks.isEmpty()){
+            authorBooks=authorBooks.substring(0,authorBooks.length()-3);
+        }else{
+            authorBooks="NONE";
+        }
+        return "*** Author Report ***"+ " "+
+                "ID: "+authorExists.getId()+" "+
+                "Name: "+authorExists.getName()+" "+
+                "Biography: "+authorExists.getBiography()+" "+
+                "Books Written: "+authorBooks;
+    }
 }
