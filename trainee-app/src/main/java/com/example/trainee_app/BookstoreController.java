@@ -34,4 +34,18 @@ public class BookstoreController {
             }
         return "NO Book with ID "+bookId;
     }
+
+    @GetMapping("lowStockReport")
+    public String lowStockReport(@RequestParam int threshold){
+        String bookReport=" ";
+        for(InventoryBook ib:inventoryBookList){
+            if(ib.getStockCount()<= threshold){
+                bookReport= bookReport+" Title: "+ib.getTitle()+" | Stock: "+ib.getStockCount();
+            }
+        }
+        if(bookReport.isEmpty()){
+            return "no books currently need reordering,...";
+        }
+        return bookReport;
+    }
 }
