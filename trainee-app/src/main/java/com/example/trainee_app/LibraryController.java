@@ -38,26 +38,21 @@ public class LibraryController {
             return "ERROR: Author with ID " + authorId + " is NOT Exists";
     }
 
-    @GetMapping("allBooks")
-    public List<Book> viewBooks(){
-        return bookList;
-    }
-
     @GetMapping("authorReport")
     public String userFriendly(@RequestParam String authorName){
-        Author authorExists = null;
+        Author authorFounder = null;
         for(Author a:authorList){
             if(a.getName().equalsIgnoreCase(authorName)){
-                authorExists=a;
+                authorFounder=a;
                 break;
             }
         }
-        if(authorExists==null){
+        if(authorFounder==null){
             return "ERROR: Author with Name " + authorName + " is NOT Exists";
         }
-        String authorBooks= " ";
+        String authorBooks= "";
         for(Book b:bookList){
-            if(b.getAuthorId()==authorExists.getId()){
+            if(b.getAuthorId()==authorFounder.getId()){
                 authorBooks = authorBooks+ b.getName()+" | ";
             }
         }
@@ -67,9 +62,9 @@ public class LibraryController {
             authorBooks="NONE";
         }
         return "*** Author Report ***"+ " "+
-                "ID: "+authorExists.getId()+" "+
-                "Name: "+authorExists.getName()+" "+
-                "Biography: "+authorExists.getBiography()+" "+
+                "ID: "+authorFounder.getId()+" "+
+                "Name: "+authorFounder.getName()+" "+
+                "Biography: "+authorFounder.getBiography()+" "+
                 "Books Written: "+authorBooks;
     }
 }
