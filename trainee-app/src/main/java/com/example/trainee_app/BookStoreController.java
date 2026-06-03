@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class BookstoreController {
+public class BookStoreController {
     public static List<InventoryBook> inventoryBookList=new ArrayList<>();
 
     @GetMapping("addInventoryBook")
