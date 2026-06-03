@@ -12,15 +12,33 @@ public class LibraryController {
     private static List<Author> authorList=new ArrayList<>();
     private static List<Book> bookList=new ArrayList<>();
 
-    @GetMapping("add-author")
+    @GetMapping("addAuthor")
     public String addAuthors(@RequestParam int id, @RequestParam String name, @RequestParam String biography){
         Author newAuthor= new Author(id,name,biography);
         authorList.add(newAuthor);
         return name + " Author ADDED Successfully";
     }
 
-    @GetMapping("all-authors")
+    @GetMapping("allAuthors")
     public List<Author> viewAuthors(){
         return authorList;
+    }
+
+    @GetMapping("addRelationalBook")
+    public String addBooks(@RequestParam int ID, @RequestParam String name, @RequestParam int authorId){
+        boolean authorExists = false;
+        for(Author a:authorList){
+            if(a.getId()==authorId){
+                authorExists= true;
+                break;
+            }
+        }
+
+        if(!authorExists){
+            return "ERROR: Author with ID "+authorId+" is NOT Exists";
+        }
+        Book newBook=new Book(ID,name,authorId);
+        bookList.add(newBook);
+        return name+ " Book ADDED Successfully";
     }
 }

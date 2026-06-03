@@ -11,19 +11,19 @@ import java.util.List;
 public class BookController {
     private static List<Book> books=new ArrayList<>();
 
-    @GetMapping("add-book")
-    public String addBook(@RequestParam int ID, @RequestParam String name, @RequestParam String authorId){
+    @GetMapping("addBook")
+    public String addBook(@RequestParam int ID, @RequestParam String name, @RequestParam int authorId){
         Book book=new Book(ID,name,authorId);
         books.add(book);
         return name+ " Book ADDED Successfully";
     }
 
-    @GetMapping("all-books")
+    @GetMapping("allBooks")
     public List<Book> viewBooks(){
         return books;
     }
 
-    @GetMapping("find-by-id")
+    @GetMapping("findById")
     public Book searchById(@RequestParam int ID){
         for(Book b:books){
             if(b.getID()==ID){
@@ -33,7 +33,7 @@ public class BookController {
         return null;
     }
 
-    @GetMapping("find-by-name")
+    @GetMapping("findByName")
     public Book searchByName(@RequestParam String name){
         for(Book b:books){
             if(b.getName().equalsIgnoreCase(name)){
@@ -43,7 +43,7 @@ public class BookController {
         return null;
     }
 
-    @GetMapping("search-msg")
+    @GetMapping("searchMsg")
     public String searchBook(@RequestParam int ID){
         for(Book b:books){
             if(b.getID()==ID){
