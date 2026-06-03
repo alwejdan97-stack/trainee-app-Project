@@ -26,19 +26,16 @@ public class LibraryController {
 
     @GetMapping("addRelationalBook")
     public String addBooks(@RequestParam int ID, @RequestParam String name, @RequestParam int authorId){
+        Book newBook=new Book(ID,name,authorId);
         boolean authorExists = false;
         for(Author a:authorList){
             if(a.getId()==authorId){
                 authorExists= true;
-                break;
+                bookList.add(newBook);
+                return name+ " Book ADDED Successfully";
             }
         }
 
-        if(!authorExists){
-            return "ERROR: Author with ID "+authorId+" is NOT Exists";
-        }
-        Book newBook=new Book(ID,name,authorId);
-        bookList.add(newBook);
-        return name+ " Book ADDED Successfully";
+            return "ERROR: Author with ID " + authorId + " is NOT Exists";
     }
 }
