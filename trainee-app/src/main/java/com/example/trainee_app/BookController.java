@@ -10,16 +10,12 @@ import java.util.List;
 
 @RestController
 public class BookController {
-    private static ArrayList<Book> books=new ArrayList<>();
+    private static List<Book> books=new ArrayList<>();
 
     @GetMapping("add-book")
-    public String book(){
-        return Arrays.asList(
-                new Book(1,"Arabic"),
-                new Book(2,"Islamic"),
-                new Book(4,"Mathematics"),
-                new Book(5,"Since"),
-                new Book(6,"Information Technology")
-        );
+    public String addBook(@RequestParam int ID, @RequestParam String name){
+        Book book=new Book(ID,name);
+        books.add(book);
+        return "Book ADD Successfully";
     }
 }
